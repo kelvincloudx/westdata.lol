@@ -1,0 +1,122 @@
+---
+import type { Article } from '../data/articles';
+
+export interface Props {
+  article: Article;
+  index: number;
+}
+
+const { article, index } = Astro.props;
+const formattedIndex = String(index + 1).padStart(2, '0');
+---
+
+<div class="article-list-item">
+  <div class="item-num">{formattedIndex}</div>
+  <div class="item-main">
+    <div class="item-meta">
+      <span class="meta-tag">INSIGHTS</span>
+      <span class="meta-date">{article.publishDate}</span>
+      <span class="meta-time">阅读时间：{article.readTime}</span>
+    </div>
+
+    <h3 class="item-title">
+      <a href={`/insights/${article.slug}/`}>{article.title}</a>
+    </h3>
+
+    <p class="item-summary">{article.summary}</p>
+
+    <div class="item-action">
+      <a href={`/insights/${article.slug}/`} class="read-more-link">
+        阅读完整文章 <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+.article-list-item {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.2s ease;
+}
+
+.article-list-item:hover {
+  background: rgba(37, 43, 48, 0.2);
+}
+
+.item-num {
+  font-family: var(--font-mono);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-accent-green);
+  line-height: 1;
+  opacity: 0.85;
+}
+
+.item-main {
+  flex-grow: 1;
+}
+
+.item-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.82rem;
+  color: var(--color-silver);
+  margin-bottom: 0.5rem;
+}
+
+.meta-tag {
+  font-family: var(--font-mono);
+  color: var(--color-accent-green);
+  font-weight: 700;
+}
+
+.item-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.item-title a {
+  color: var(--color-warm-white);
+}
+
+.item-title a:hover {
+  color: var(--color-accent-green);
+}
+
+.item-summary {
+  color: var(--color-silver);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.read-more-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-accent-green);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.read-more-link:hover .arrow {
+  transform: translateX(4px);
+}
+
+.arrow {
+  transition: transform 0.2s ease;
+}
+
+@media (max-width: 600px) {
+  .article-list-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+</style>

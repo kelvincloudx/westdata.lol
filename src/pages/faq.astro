@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import { FAQS } from '../data/faqs';
+import { SITE_CONFIG } from '../data/siteMeta';
+
+const canonicalUrl = `${SITE_CONFIG.domain}/faq/`;
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': FAQS.map(f => ({
+    '@type': 'Question',
+    'name': f.question,
+    'acceptedAnswer': {
+      '@type': 'Answer',
+      'text': f.answer
+    }
+  }))
+};
+---
+
+<Layout
+  title={`WESTDATA 常见问题解答 FAQ｜${SITE_CONFIG.name}`}
+  description="针对西部数据 WESTDATA 的10条核心常见问题解答，涵盖参考套餐价格、150GB至1000GB流量区别、300GB不限时流量包规则、客户端导入与节点排错。"
+  canonicalUrl={canonicalUrl}
+  jsonLd={[faqJsonLd]}
+>
+  <div class="faq-page container">
+    <nav class="breadcrumb" aria-label="面包屑导航">
+      <a href="/">首页</a> &gt; <span>常见问题</span>
+    </nav>
+
+    <FaqAccordion />
+
+    <div class="faq-contact-box grid-box">
+      <div class="grid-header">
+        <div class="badge">NEED FURTHER HELP?</div>
+        <div>平台售后与核对入口</div>
+      </div>
+      <div class="faq-contact-body">
+        <h3>未找到你关心的问题？</h3>
+        <p>如果您在购买结算、订阅重置或服务条款方面需要更多人工解答，请直接前往指定商业平台客服窗口进行咨询。</p>
+        <a href={SITE_CONFIG.buyUrl} target="_blank" rel="sponsored nofollow noopener" class="btn btn-orange">
+          前往服务平台客服 →
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+.faq-page {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-silver);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: var(--color-silver);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-accent-green);
+}
+
+.breadcrumb span {
+  color: var(--color-warm-white);
+}
+
+.faq-contact-box {
+  margin-top: 3rem;
+  background: var(--color-bg-card);
+}
+
+.faq-contact-body {
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.faq-contact-body h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-warm-white);
+  margin-bottom: 0.75rem;
+}
+
+.faq-contact-body p {
+  color: var(--color-silver);
+  font-size: 0.95rem;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+</style>

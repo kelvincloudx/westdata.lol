@@ -1,0 +1,73 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_CONFIG } from '../data/siteMeta';
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  type?: string;
+  jsonLd?: object[];
+}
+
+const {
+  title = `${SITE_CONFIG.name} ${SITE_CONFIG.enName}｜订阅套餐、Clash使用与网络连接指南`,
+  description = '了解 WESTDATA 西部数据公开参考套餐、150GB至1000GB月度流量和300GB一次性流量包，查看ClashParty、客户端配置、节点知识及常见问题。',
+  canonicalUrl = Astro.url.href.endsWith('/') ? Astro.url.href : `${Astro.url.href}/`,
+  type = 'website',
+  jsonLd = []
+} = Astro.props;
+
+// Default WebSite & Breadcrumb Schema
+const baseWebSiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  'name': `${SITE_CONFIG.name} ${SITE_CONFIG.enName}`,
+  'url': SITE_CONFIG.domain,
+  'description': description
+};
+
+const allSchemas = [baseWebSiteSchema, ...jsonLd];
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  
+  <!-- Keywords -->
+  <meta name="keywords" content="西部数据, WESTDATA, 西部数据套餐, 西部数据价格, 西部数据订阅, WESTDATA客户端, WESTDATA节点, 便宜机场, 安全机场, 科学上网, 魔法梯子, 稳定节点, Clash节点, Clash机场, ClashParty机场, 翻墙出海, 全球加速" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content={type} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:site_name" content={`${SITE_CONFIG.name} ${SITE_CONFIG.enName}`} />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+
+  <!-- Structured Data -->
+  {allSchemas.map(schema => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))}
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>

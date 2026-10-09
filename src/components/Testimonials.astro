@@ -1,0 +1,137 @@
+---
+export interface TestimonialItem {
+  tag: string;
+  title: string;
+  content: string;
+}
+
+const TESTIMONIALS: TestimonialItem[] = [
+  {
+    tag: '跨境办公用户',
+    title: '日常使用更省心',
+    content: '我平时主要是处理网页资料、邮件和远程协作，最看重的是不要频繁折腾。这个站点把套餐和使用流程说明得比较清楚，选套餐的时候不会一头雾水。对我来说，省时间就是最大的优势。'
+  },
+  {
+    tag: '技术学习用户',
+    title: '资料说明比较直观',
+    content: '以前最怕的就是页面写得太复杂，看半天也不知道该怎么开始。这里把流量、周期和配置思路拆得比较明白，新手照着看也能快速理解，不容易走弯路。'
+  },
+  {
+    tag: '内容浏览用户',
+    title: '连接思路清楚很多',
+    content: '我不需要花哨功能，主要就是希望平时浏览、查资料和视频访问时更稳一点。页面里关于连接方式、节点和客户端的说明都比较直接，读起来没有负担。'
+  },
+  {
+    tag: '多设备用户',
+    title: '切换设备时更方便',
+    content: '我会在电脑和手机之间切换使用，所以很在意信息整理是否清晰。这个站的结构比较规整，套餐、教程、FAQ 分得明白，后续查看和回头排查问题都比较方便。'
+  }
+];
+---
+
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="section-title-wrap text-center">
+      <div class="section-num">07 / REVIEWS & RECOMMENDATIONS</div>
+      <h2 class="section-title">用户口碑评价与推荐</h2>
+      <p class="section-subtitle center-subtitle">
+        从跨境办公用户到日常学习使用者，很多人更看重的是流程清晰、配置简单和连接体验稳定。
+      </p>
+    </div>
+
+    <div class="testimonials-grid">
+      {TESTIMONIALS.map((item, idx) => (
+        <div class="testimonial-card grid-box">
+          <div class="grid-header">
+            <div class="badge">REVIEW 0{idx + 1}</div>
+            <div class="user-tag">{item.tag}</div>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">{item.title}</h3>
+            <p class="card-content">{item.content}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.testimonials-section {
+  padding: 4.5rem 0;
+  border-top: 1px solid var(--color-border);
+  background: rgba(17, 20, 23, 0.6);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.center-subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 4px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent-green);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.user-tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-accent-green);
+  font-weight: 700;
+  background: rgba(182, 243, 106, 0.1);
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+}
+
+.card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-warm-white);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.card-content {
+  color: var(--color-silver);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

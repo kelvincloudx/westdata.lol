@@ -1,0 +1,102 @@
+---
+import { SITE_CONFIG } from '../data/siteMeta';
+---
+
+<section class="user-focus-section">
+  <div class="container">
+    <div class="section-title-wrap">
+      <div class="section-num">03 / USER CONCERNS & DISCLOSURES</div>
+      <h2 class="section-title">用户常见关注点与服务知悉</h2>
+      <p class="section-subtitle">
+        为确保客观透明的订阅体验，我们整理了用户在选购与使用 WESTDATA 过程中最为关心的四大核心要素。
+      </p>
+    </div>
+
+    <div class="focus-grid">
+      <div class="focus-card grid-box">
+        <div class="grid-header">
+          <div class="badge">01 / REAL PRICING</div>
+        </div>
+        <div class="focus-card-body">
+          <h3 class="focus-title">价格与实际结算一致性</h3>
+          <p class="focus-text">
+            本官网展示的基础体验版（¥15/月）、进阶专线版（¥28/月）、旗舰尊享版（¥48/月）及不限时流量包（¥68/次）为公开参考数据。平台可能会根据实际运营政策调整价格，请以跳转后的最终收银台提示为准。
+          </p>
+        </div>
+      </div>
+
+      <div class="focus-card grid-box">
+        <div class="grid-header">
+          <div class="badge">02 / DATA RESET</div>
+        </div>
+        <div class="focus-card-body">
+          <h3 class="focus-title">流量重置与扣减规则</h3>
+          <p class="focus-text">
+            月度套餐（150GB、450GB、1000GB）在每个账单周期起始日自动刷新配额；不限时流量包（300GB）按实际用量逐 MB 扣减，跨月不清零。请使用客户端“规则分流”避免国内流量浪费。
+          </p>
+        </div>
+      </div>
+
+      <div class="focus-card grid-box">
+        <div class="grid-header">
+          <div class="badge">03 / PROTOCOL COMPATIBILITY</div>
+        </div>
+        <div class="focus-card-body">
+          <h3 class="focus-title">客户端与协议兼容性</h3>
+          <p class="focus-text">
+            订阅配置兼容 ClashParty、Clash Verge、Shadowrocket、Stash 及 Surfboard 等主流代理工具。导入时须复制控制台生成的“订阅 URL”，切勿将网页购买链接作为订阅导入。
+          </p>
+        </div>
+      </div>
+
+      <div class="focus-card grid-box">
+        <div class="grid-header">
+          <div class="badge">04 / DISCLOSURE</div>
+        </div>
+        <div class="focus-card-body">
+          <h3 class="focus-title">独立品牌与真实权益</h3>
+          <p class="focus-text">
+            WESTDATA 为独立网络订阅品牌，不伪造 5 星虚假好评，不提供未经第三方实测的极速承诺。本站与 Western Digital 存储及 west.cn 无关，购买跳转前请核对服务条款。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.user-focus-section {
+  padding: 4rem 0;
+  border-top: 1px solid var(--color-border);
+  background: rgba(17, 20, 23, 0.4);
+}
+
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.focus-card-body {
+  padding: 1.5rem;
+}
+
+.focus-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-warm-white);
+  margin-bottom: 0.75rem;
+}
+
+.focus-text {
+  color: var(--color-silver);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .focus-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

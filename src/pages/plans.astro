@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PricingTable from '../components/PricingTable.astro';
+import { SITE_CONFIG } from '../data/siteMeta';
+
+const canonicalUrl = `${SITE_CONFIG.domain}/plans/`;
+
+const pageJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  'name': 'WESTDATA 西部数据网络订阅套餐',
+  'description': '包含150GB基础体验版、450GB进阶专线版、1000GB旗舰尊享版与300GB不限时流量包完整公开参考价格与性能说明。',
+  'offers': {
+    '@type': 'AggregateOffer',
+    'priceCurrency': 'CNY',
+    'lowPrice': '15.00',
+    'highPrice': '68.00',
+    'offerCount': '4'
+  }
+};
+---
+
+<Layout
+  title={`WESTDATA 订阅套餐价格表与流量方案｜${SITE_CONFIG.name}`}
+  description="详细对比 WESTDATA 西部数据基础体验版（¥15/月/150GB）、进阶专线版（¥28/月/450GB）、旗舰尊享版（¥48/月/1000GB）与不限时流量包（¥68/300GB总量），查看客户端兼容性与选购说明。"
+  canonicalUrl={canonicalUrl}
+  jsonLd={[pageJsonLd]}
+>
+  <div class="plans-page container">
+    <nav class="breadcrumb" aria-label="面包屑导航">
+      <a href="/">首页</a> &gt; <span>订阅套餐</span>
+    </nav>
+
+    <PricingTable showComparisonTable={true} />
+
+    <section class="plans-help-box grid-box">
+      <div class="grid-header">
+        <div class="badge">CHOOSING THE RIGHT PLAN</div>
+        <div>套餐选购建议与说明</div>
+      </div>
+      <div class="help-body">
+        <h3>如何根据你的使用场景选购？</h3>
+        <div class="help-grid">
+          <div class="help-card">
+            <h4>按月付费（月度套餐）</h4>
+            <p>适用于每天都有联网需求的用户。无论是 150GB（¥15.00/月）、450GB（¥28.00/月）还是 1000GB（¥48.00/月），单位流量成本更低。每个账单周期重新清零并重置额度。</p>
+          </div>
+          <div class="help-card">
+            <h4>一次性付费（不限时流量包）</h4>
+            <p>适用于低频备用、临时出差或每月用量极少的场景。¥68.00/次购买 300GB 总流量，按实际消耗扣减，不会按月清零，非常适合作为主力网络之外的第二备份线路。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+.plans-page {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-silver);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: var(--color-silver);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-accent-green);
+}
+
+.breadcrumb span {
+  color: var(--color-warm-white);
+}
+
+.plans-help-box {
+  margin-top: 3rem;
+  background: var(--color-bg-card);
+}
+
+.help-body {
+  padding: 2rem;
+}
+
+.help-body h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-warm-white);
+  margin-bottom: 1.5rem;
+}
+
+.help-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.help-card {
+  padding: 1.25rem;
+  background: rgba(17, 20, 23, 0.6);
+  border: 1px solid var(--color-border);
+}
+
+.help-card h4 {
+  font-size: 1.1rem;
+  color: var(--color-accent-green);
+  margin-bottom: 0.5rem;
+}
+
+.help-card p {
+  color: var(--color-silver);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .help-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

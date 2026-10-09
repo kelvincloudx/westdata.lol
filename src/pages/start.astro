@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_CONFIG } from '../data/siteMeta';
+
+const canonicalUrl = `${SITE_CONFIG.domain}/start/`;
+---
+
+<Layout
+  title={`WESTDATA 新用户快速上手与入门指南｜${SITE_CONFIG.name}`}
+  description="了解 WESTDATA 西部数据网络订阅的新用户快速入门指南，从账号注册、购买选择、客户端选择到订阅链接导入的全流程教程。"
+  canonicalUrl={canonicalUrl}
+>
+  <div class="start-page container">
+    <nav class="breadcrumb" aria-label="面包屑导航">
+      <a href="/">首页</a> &gt; <span>使用入门</span>
+    </nav>
+
+    <div class="start-header section-title-wrap">
+      <div class="section-num">00 / QUICKSTART</div>
+      <h1 class="section-title">WESTDATA 新用户快速使用入门</h1>
+      <p class="section-subtitle">
+        遵循简单安全的四步操作流程，从开通订阅到顺畅连接全流程指引。
+      </p>
+    </div>
+
+    <div class="start-grid">
+      <!-- Step 1 -->
+      <div class="start-card grid-box">
+        <div class="grid-header">
+          <div class="badge">STEP 01</div>
+          <div>开通与核对</div>
+        </div>
+        <div class="card-body">
+          <h3>1. 点击唯一商业平台入口</h3>
+          <p>打开全站提供的指定购买链接（<a href={SITE_CONFIG.buyUrl} target="_blank" rel="sponsored nofollow noopener">前往订阅平台</a>），注册您的个人账户。</p>
+          <p>在控制台仔细核对 150GB 基础体验版、450GB 专线版、1000GB 旗舰版或 300GB 一次性流量包的最新价格与说明，完成套餐开通。</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="start-card grid-box">
+        <div class="grid-header">
+          <div class="badge">STEP 02</div>
+          <div>订阅提取</div>
+        </div>
+        <div class="card-body">
+          <h3>2. 获取专属订阅 URL / 二维码</h3>
+          <p>支付成功后，登录控制台进入“仪表盘”或“订阅管理”模块。</p>
+          <p>找到“一键导入”或“复制订阅链接”按钮，复制含有您的专属 Token 识别码的订阅 URL。注意：切勿将网页购买链接直接贴入客户端中。</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="start-card grid-box">
+        <div class="grid-header">
+          <div class="badge">STEP 03</div>
+          <div>客户端配置</div>
+        </div>
+        <div class="card-body">
+          <h3>3. 下载并导入客户端</h3>
+          <p>根据您的设备类型（Windows / Android / iOS / macOS）准备合规客户端工具（如 ClashParty、Shadowrocket 或 Stash）。</p>
+          <p>打开软件，选择“添加配置 / 订阅”，粘贴步骤 2 中复制的 URL 并保存拉取节点。</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="start-card grid-box">
+        <div class="grid-header">
+          <div class="badge">STEP 04</div>
+          <div>模式切换与测试</div>
+        </div>
+        <div class="card-body">
+          <h3>4. 开启规则分流并启动连接</h3>
+          <p>将客户端运行模式设定为<strong>“Rule（规则模式）”</strong>，开启代理开关。</p>
+          <p>打开浏览器访问海外网站测试连接；同时访问国内应用（如微信、百度）确认直接连接不消耗套餐流量。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="start-actions">
+      <a href="/clients/" class="btn btn-primary">查看详细客户端指南 →</a>
+      <a href="/insights/user-checklist/" class="btn btn-secondary">阅读新用户检查清单 →</a>
+      <a href={SITE_CONFIG.buyUrl} target="_blank" rel="sponsored nofollow noopener" class="btn btn-orange">前往开通订阅 →</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+.start-page {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-silver);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: var(--color-silver);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-accent-green);
+}
+
+.breadcrumb span {
+  color: var(--color-warm-white);
+}
+
+.start-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-body h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-warm-white);
+  margin-bottom: 0.75rem;
+}
+
+.card-body p {
+  color: var(--color-silver);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.start-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .start-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

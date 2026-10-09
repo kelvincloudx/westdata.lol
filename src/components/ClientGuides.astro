@@ -1,0 +1,175 @@
+---
+import { SITE_CONFIG } from '../data/siteMeta';
+---
+
+<section class="client-guides-section" id="clients">
+  <div class="container">
+    <div class="section-title-wrap">
+      <div class="section-num">04 / CLIENT SETUP & WORKFLOW</div>
+      <h2 class="section-title">全平台客户端配置流程说明</h2>
+      <p class="section-subtitle">
+        按操作系统选择合规客户端，从注册购买到导入订阅连接只需三步。
+      </p>
+    </div>
+
+    <!-- 3 Steps Grid -->
+    <div class="workflow-steps grid-box">
+      <div class="grid-header">
+        <div class="badge">GETTING STARTED WORKFLOW</div>
+        <div>简单 3 步开启连接</div>
+      </div>
+      <div class="steps-body">
+        <div class="step-item">
+          <div class="step-num">STEP 01</div>
+          <h3 class="step-title">开通订阅套餐</h3>
+          <p class="step-desc">
+            前往<a href={SITE_CONFIG.buyUrl} target="_blank" rel="sponsored nofollow noopener">官方订阅平台</a>注册账号，选择基础版、专线版、旗舰版或一次性流量包并完成支付。
+          </p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">STEP 02</div>
+          <h3 class="step-title">获取订阅链接</h3>
+          <p class="step-desc">
+            在订阅控制台找到“快速导入”或“复制订阅链接（URL）”，将专属的 Token 链接复制到剪贴板。
+          </p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">STEP 03</div>
+          <h3 class="step-title">导入客户端并连接</h3>
+          <p class="step-desc">
+            打开 ClashParty、Shadowrocket 或 Stash 软件，贴入订阅 URL 完成节点拉取，开启“规则模式（Rule）”即可畅游。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Multi-platform Client Cards -->
+    <div class="platform-grid">
+      <div class="platform-card grid-box">
+        <div class="grid-header">
+          <div class="badge">WINDOWS</div>
+        </div>
+        <div class="platform-body">
+          <h4 class="platform-name">ClashParty / Clash Verge</h4>
+          <p class="platform-desc">适用于 Windows 10/11 64位系统。支持图形化策略组切换与 TUN 虚拟网卡模式。</p>
+          <ul class="platform-checklist">
+            <li>✓ 开启 System Proxy 系统代理</li>
+            <li>✓ 勾选 Rule 规则分流模式</li>
+            <li>✓ 开启 Windows 自动时间同步</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platform-card grid-box">
+        <div class="grid-header">
+          <div class="badge">ANDROID</div>
+        </div>
+        <div class="platform-body">
+          <h4 class="platform-name">Clash Meta / Surfboard</h4>
+          <p class="platform-desc">支持各种 Android 手机与平板。原生适配 VpnService 系统服务。</p>
+          <ul class="platform-checklist">
+            <li>✓ 允许创建系统 VPN 连接</li>
+            <li>✓ 设置应用“无限制”后台运行</li>
+            <li>✓ 定期拉取最新分流规则</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="platform-card grid-box">
+        <div class="grid-header">
+          <div class="badge">IOS / MACOS</div>
+        </div>
+        <div class="platform-body">
+          <h4 class="platform-name">Shadowrocket / Stash</h4>
+          <p class="platform-desc">iOS 平台高口碑客户端。支持二维码扫描配置与规则分流。</p>
+          <ul class="platform-checklist">
+            <li>✓ 使用非大陆区 Apple ID 获取</li>
+            <li>✓ 允许添加 VPN 节点配置</li>
+            <li>✓ 开启按需连接（On-Demand）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.client-guides-section {
+  padding: 4rem 0;
+}
+
+.workflow-steps {
+  margin-bottom: 2.5rem;
+}
+
+.steps-body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-accent-green);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.step-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-warm-white);
+  margin-bottom: 0.5rem;
+}
+
+.step-desc {
+  font-size: 0.9rem;
+  color: var(--color-silver);
+  line-height: 1.6;
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.platform-body {
+  padding: 1.5rem;
+}
+
+.platform-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-warm-white);
+  margin-bottom: 0.5rem;
+}
+
+.platform-desc {
+  font-size: 0.88rem;
+  color: var(--color-silver);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.platform-checklist {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #D1D5DB;
+}
+
+@media (max-width: 900px) {
+  .steps-body {
+    grid-template-columns: 1fr;
+  }
+  .platform-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

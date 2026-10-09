@@ -1,0 +1,250 @@
+---
+import Layout from './Layout.astro';
+import { SITE_CONFIG } from '../data/siteMeta';
+import type { Article } from '../data/articles';
+
+export interface Props {
+  article: Article;
+}
+
+const { article } = Astro.props;
+
+const canonicalUrl = `${SITE_CONFIG.domain}/insights/${article.slug}/`;
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  'headline': article.title,
+  'description': article.metaDescription,
+  'datePublished': article.publishDate,
+  'dateModified': article.updatedDate,
+  'mainEntityOfPage': {
+    '@type': 'WebPage',
+    '@id': canonicalUrl
+  },
+  'author': {
+    '@type': 'Organization',
+    'name': `${SITE_CONFIG.name} ${SITE_CONFIG.enName}`
+  },
+  'publisher': {
+    '@type': 'Organization',
+    'name': `${SITE_CONFIG.name} ${SITE_CONFIG.enName}`,
+    'url': SITE_CONFIG.domain
+  }
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': '首页',
+      'item': `${SITE_CONFIG.domain}/`
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': '文章目录',
+      'item': `${SITE_CONFIG.domain}/insights/`
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': article.title,
+      'item': canonicalUrl
+    }
+  ]
+};
+---
+
+<Layout
+  title={article.metaTitle}
+  description={article.metaDescription}
+  canonicalUrl={canonicalUrl}
+  type="article"
+  jsonLd={[articleJsonLd, breadcrumbJsonLd]}
+>
+  <div class="article-page container">
+    <nav class="breadcrumb" aria-label="面包屑导航">
+      <a href="/">首页</a> &gt; <a href="/insights/">文章目录</a> &gt; <span>{article.title}</span>
+    </nav>
+
+    <article class="article-container grid-box">
+      <header class="article-header grid-header">
+        <div class="badge">ARTICLE / {article.slug.toUpperCase()}</div>
+        <div class="meta-date">发布于：{article.publishDate} ｜ 阅读时间：{article.readTime}</div>
+      </header>
+
+      <div class="article-body">
+        <h1 class="article-title">{article.title}</h1>
+
+        <div class="article-summary-box">
+          <strong>文章摘要：</strong>{article.summary}
+        </div>
+
+        <div class="article-content" set:html={article.content} />
+
+        {article.internalLinks && article.internalLinks.length > 0 && (
+          <div class="internal-links-box">
+            <h3>延伸阅读与相关链接</h3>
+            <ul>
+              {article.internalLinks.map(link => (
+                <li>
+                  <a href={link.url} target={link.url.startsWith('http') ? '_blank' : '_self'} rel={link.url.startsWith('http') ? 'sponsored nofollow noopener' : undefined}>
+                    → {link.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <div class="article-footer-actions">
+          <a href="/insights/" class="btn btn-secondary">← 返回文章目录</a>
+          <a href={SITE_CONFIG.buyUrl} target="_blank" rel="sponsored nofollow noopener" class="btn btn-orange">前往订阅平台 →</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</Layout>
+
+<style>
+.article-page {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-silver);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: var(--color-silver);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-accent-green);
+}
+
+.breadcrumb span {
+  color: var(--color-warm-white);
+}
+
+.article-container {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+}
+
+.article-body {
+  padding: 2.5rem;
+}
+
+.article-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-warm-white);
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+}
+
+.article-summary-box {
+  background: rgba(37, 43, 48, 0.5);
+  border-left: 3px solid var(--color-accent-green);
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem;
+  color: var(--color-silver);
+  font-size: 0.95rem;
+}
+
+.article-summary-box strong {
+  color: var(--color-warm-white);
+}
+
+.article-content {
+  color: #D1D5DB;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.article-content :global(h2) {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-warm-white);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.article-content :global(p) {
+  margin-bottom: 1.25rem;
+}
+
+.article-content :global(ul), .article-content :global(ol) {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.article-content :global(li) {
+  margin-bottom: 0.5rem;
+}
+
+.article-content :global(strong) {
+  color: var(--color-warm-white);
+}
+
+.internal-links-box {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background: rgba(17, 20, 23, 0.6);
+  border: 1px solid var(--color-border);
+}
+
+.internal-links-box h3 {
+  font-size: 1.1rem;
+  color: var(--color-warm-white);
+  margin-bottom: 1rem;
+}
+
+.internal-links-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.internal-links-box li {
+  margin-bottom: 0.5rem;
+}
+
+.internal-links-box a {
+  font-weight: 600;
+}
+
+.article-footer-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .article-body {
+    padding: 1.5rem;
+  }
+  .article-title {
+    font-size: 1.5rem;
+  }
+  .article-footer-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+</style>

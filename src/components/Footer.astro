@@ -1,0 +1,198 @@
+---
+import { SITE_CONFIG } from '../data/siteMeta';
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-grid">
+      <!-- Column 1: Brand & Disclaimer -->
+      <div class="footer-col brand-col">
+        <div class="footer-logo">
+          <span class="logo-text">{SITE_CONFIG.name}</span>
+          <span class="logo-en">{SITE_CONFIG.enName}</span>
+        </div>
+        <p class="footer-desc">
+          西部数据 WESTDATA 网络订阅服务品牌官网。了解网络订阅套餐、流量方案与客户端配置指南，掌控节点选择与安全防护。
+        </p>
+      </div>
+
+      <!-- Column 2: Navigation -->
+      <div class="footer-col">
+        <h4 class="footer-heading">快速导航</h4>
+        <ul class="footer-links">
+          <li><a href="/">官网首页</a></li>
+          <li><a href="/plans/">订阅套餐价格表</a></li>
+          <li><a href="/start/">新用户使用入门</a></li>
+          <li><a href="/clients/">客户端配置指南</a></li>
+          <li><a href="/insights/">技术文章与深度分析</a></li>
+          <li><a href="/faq/">常见问题 FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Original Articles Links -->
+      <div class="footer-col">
+        <h4 class="footer-heading">重点指南</h4>
+        <ul class="footer-links">
+          <li><a href="/insights/traffic-planning/">套餐流量分配规划</a></li>
+          <li><a href="/insights/one-time-data/">300GB不限时流量包说明</a></li>
+          <li><a href="/insights/subscription-protection/">订阅信息安全防护</a></li>
+          <li><a href="/insights/clashparty-rules/">ClashParty 规则分流实践</a></li>
+          <li><a href="/insights/connection-metrics/">连接质量与延迟指标解析</a></li>
+          <li><a href="/insights/device-setup/">跨设备网络配置与排错</a></li>
+          <li><a href="/insights/user-checklist/">新用户零踩坑检查清单</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Platform Entry -->
+      <div class="footer-col">
+        <h4 class="footer-heading">服务平台</h4>
+        <p class="platform-tip">需要购买套餐或管理您的账户？请使用唯一指定商业平台入口：</p>
+        <a href={SITE_CONFIG.buyUrl} target="_blank" rel="sponsored nofollow noopener" class="btn btn-orange btn-block footer-buy-btn">
+          前往订阅平台 →
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="copyright">
+        © {new Date().getFullYear()} {SITE_CONFIG.name} {SITE_CONFIG.enName} (https://westdata.lol). 保留所有权利。
+      </div>
+      <div class="mode-tag">
+        MODE: PURE STATIC / SIGNAL GRID
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+.site-footer {
+  background: var(--color-bg-dark);
+  border-top: 1px solid var(--color-border);
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  margin-top: auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr 1.2fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.logo-text {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-warm-white);
+}
+
+.logo-en {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-accent-green);
+  font-weight: 700;
+}
+
+.footer-desc {
+  color: var(--color-silver);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.footer-disclaimer {
+  background: rgba(37, 43, 48, 0.4);
+  border-left: 3px solid var(--color-accent-orange);
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  color: #8C969E;
+  line-height: 1.5;
+}
+
+.footer-heading {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-warm-white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.5rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-links a {
+  color: var(--color-silver);
+  font-size: 0.88rem;
+}
+
+.footer-links a:hover {
+  color: var(--color-accent-green);
+}
+
+.platform-tip {
+  color: var(--color-silver);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.footer-buy-btn {
+  font-size: 0.88rem;
+  padding: 0.6rem 1rem;
+}
+
+.url-note {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #6C767E;
+  margin-top: 0.5rem;
+  word-break: break-all;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--color-border);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: #6C767E;
+}
+
+.mode-tag {
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 992px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}
+</style>

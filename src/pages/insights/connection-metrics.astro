@@ -1,0 +1,8 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { ARTICLES } from '../../data/articles';
+
+const article = ARTICLES.find(a => a.slug === 'connection-metrics')!;
+---
+
+<ArticleLayout article={article} />

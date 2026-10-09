@@ -1,0 +1,278 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import PricingTable from '../components/PricingTable.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import UserFocusArea from '../components/UserFocusArea.astro';
+import ClientGuides from '../components/ClientGuides.astro';
+import Testimonials from '../components/Testimonials.astro';
+import { ARTICLES } from '../data/articles';
+import { SITE_CONFIG } from '../data/siteMeta';
+---
+
+<Layout>
+  <Hero />
+
+  <!-- Brand Intro & Technology Section -->
+  <section class="brand-intro-section container">
+    <div class="intro-box grid-box">
+      <div class="grid-header">
+        <div class="badge">BRAND & INFRASTRUCTURE</div>
+        <div>SIGNAL GRID ARCHITECTURE</div>
+      </div>
+      <div class="intro-body">
+        <div class="intro-col">
+          <h2 class="intro-heading">西部数据 WESTDATA 网络订阅品牌</h2>
+          <p class="intro-text">
+            WESTDATA 为用户提供透明、灵活且兼容主流客户端的网络订阅服务。无论你是需要稳定流畅的日常网页浏览、4K/8K 视频流媒体观赏，还是低延迟的游戏连接，我们都提供了覆盖不同流量需求与设备规模的方案选择。
+          </p>
+        </div>
+        <div class="intro-col grid-lines-left">
+          <h3 class="feature-title">技术优势与分流保障</h3>
+          <ul class="intro-list">
+            <li><strong>规则分流支持：</strong>完美契合 ClashParty 策略组配置，国内直连不耗流量。</li>
+            <li><strong>方案覆盖全面：</strong>包含 150GB 至 1000GB 月度订阅及 300GB 不限时流量包。</li>
+            <li><strong>多端无缝协同：</strong>适配 Windows、Android、iOS 及 macOS 系统。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Table Section -->
+  <PricingTable showComparisonTable={true} />
+
+  <!-- Node & Connection Technical Knowledge Section -->
+  <section class="tech-knowledge-section container">
+    <div class="section-title-wrap">
+      <div class="section-num">05 / KNOWLEDGE BASE</div>
+      <h2 class="section-title">节点选择与网络连接基础知识</h2>
+      <p class="section-subtitle">
+        掌握代理节点工作原理，学会看懂延迟、抖动与丢包参数，避免盲目被虚假测速误导。
+      </p>
+    </div>
+
+    <div class="knowledge-grid">
+      <div class="k-card grid-box">
+        <div class="grid-header">
+          <div class="badge">01 / NODE ROUTING</div>
+        </div>
+        <div class="k-body">
+          <h4>中转节点与出口节点</h4>
+          <p>代理网络通过国内入口中转服务器将加密数据包发送至海外出口节点。专线线路能够大幅度减少在公网骨干网中的波动与丢包。</p>
+          <a href="/insights/connection-metrics/">阅读连接质量指标解析 →</a>
+        </div>
+      </div>
+
+      <div class="k-card grid-box">
+        <div class="grid-header">
+          <div class="badge">02 / RULE SPLITTING</div>
+        </div>
+        <div class="k-body">
+          <h4>Clash 策略组与规则解析</h4>
+          <p>通过配置规则（Ruleset），可以将特定域名自动定向至不同的代理策略组，实现国内网站 Direct 本地直连、海外资源 Proxy 代理。</p>
+          <a href="/insights/clashparty-rules/">阅读 ClashParty 规则分流实践 →</a>
+        </div>
+      </div>
+
+      <div class="k-card grid-box">
+        <div class="grid-header">
+          <div class="badge">03 / SECURITY</div>
+        </div>
+        <div class="k-body">
+          <h4>订阅链接与凭证防护</h4>
+          <p>订阅 URL 包含你的专属身份 Token，切勿截图公开发布。若怀疑泄漏，应立即前往控制台重置订阅 Token 确保安全。</p>
+          <a href="/insights/subscription-protection/">阅读订阅安全指南 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Setup Section -->
+  <ClientGuides />
+
+  <!-- 7 Original Articles Directory Section -->
+  <section class="articles-directory-section container" id="insights">
+    <div class="section-title-wrap">
+      <div class="section-num">06 / ORIGINAL INSIGHTS</div>
+      <h2 class="section-title">WESTDATA 技术指南与原创文章</h2>
+      <p class="section-subtitle">
+        针对套餐流量分配、一次性流量规划、订阅防护、分流配置与设备排错的完整实操指南。
+      </p>
+    </div>
+
+    <div class="articles-list grid-box">
+      <div class="grid-header">
+        <div class="badge">ARTICLE INDEX ({ARTICLES.length} ARTICLES)</div>
+        <div>编号目录展开</div>
+      </div>
+      <div class="articles-list-body">
+        {ARTICLES.map((article, idx) => (
+          <ArticleCard article={article} index={idx} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- User Focus Area Section -->
+  <UserFocusArea />
+
+  <!-- Testimonials Section -->
+  <Testimonials />
+
+  <!-- FAQ Section -->
+  <FaqAccordion />
+
+  <!-- Commercial CTA Banner Section -->
+  <section class="cta-banner-section container">
+    <div class="cta-box grid-box">
+      <div class="grid-header">
+        <div class="badge">COMMERCIAL PORTAL</div>
+        <div>JOIN WESTDATA NETWORK</div>
+      </div>
+      <div class="cta-body">
+        <h2 class="cta-title">准备好开始使用 WESTDATA 订阅服务了吗？</h2>
+        <p class="cta-desc">
+          点击下方唯一指定商业平台入口前往开通，查看基础体验版、进阶专线版、旗舰尊享版与 300GB 不限时流量包的实时状态。
+        </p>
+        <div class="cta-btn-wrap">
+          <a href={SITE_CONFIG.buyUrl} target="_blank" rel="sponsored nofollow noopener" class="btn btn-orange btn-lg">
+            立即前往订阅平台开通 →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+.brand-intro-section {
+  padding: 2rem 0;
+}
+
+.intro-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  padding: 2.5rem;
+}
+
+.intro-heading {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-warm-white);
+  margin-bottom: 1rem;
+}
+
+.intro-text {
+  color: var(--color-silver);
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
+
+.grid-lines-left {
+  padding-left: 2rem;
+  border-left: 1px solid var(--color-border);
+}
+
+.feature-title {
+  font-size: 1.2rem;
+  color: var(--color-warm-white);
+  margin-bottom: 1rem;
+}
+
+.intro-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.92rem;
+  color: var(--color-silver);
+}
+
+.intro-list strong {
+  color: var(--color-accent-green);
+}
+
+.tech-knowledge-section, .articles-directory-section {
+  padding: 4rem 0;
+}
+
+.knowledge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.k-body {
+  padding: 1.5rem;
+}
+
+.k-body h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-warm-white);
+  margin-bottom: 0.5rem;
+}
+
+.k-body p {
+  font-size: 0.88rem;
+  color: var(--color-silver);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.k-body a {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.articles-list-body {
+  padding: 1rem 2rem;
+}
+
+.cta-banner-section {
+  padding: 4rem 0;
+}
+
+.cta-body {
+  padding: 3.5rem 2.5rem;
+  text-align: center;
+}
+
+.cta-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-warm-white);
+  margin-bottom: 1rem;
+}
+
+.cta-desc {
+  color: var(--color-silver);
+  font-size: 1.05rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.btn-lg {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 900px) {
+  .intro-body {
+    grid-template-columns: 1fr;
+  }
+  .grid-lines-left {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.5rem;
+  }
+  .knowledge-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

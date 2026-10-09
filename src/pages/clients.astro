@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ClientGuides from '../components/ClientGuides.astro';
+import { SITE_CONFIG } from '../data/siteMeta';
+
+const canonicalUrl = `${SITE_CONFIG.domain}/clients/`;
+---
+
+<Layout
+  title={`WESTDATA 客户端下载与配置指南（Windows/Android/iOS）｜${SITE_CONFIG.name}`}
+  description="包含 WESTDATA 西部数据在 Windows (ClashParty)、Android (Clash Meta)、iOS (Shadowrocket) 与 macOS (Stash) 平台上的配置教程与排错说明。"
+  canonicalUrl={canonicalUrl}
+>
+  <div class="clients-page container">
+    <nav class="breadcrumb" aria-label="面包屑导航">
+      <a href="/">首页</a> &gt; <span>客户端指南</span>
+    </nav>
+
+    <ClientGuides />
+
+    <section class="troubleshoot-box grid-box">
+      <div class="grid-header">
+        <div class="badge">TROUBLESHOOTING GUIDE</div>
+        <div>客户端连接常见故障自检表</div>
+      </div>
+      <div class="tb-body">
+        <div class="tb-item">
+          <h4>问题 1：节点列表显示全部 Timeout 或 0ms / 无法连接</h4>
+          <p>
+            <strong>可能原因：</strong>系统时间不同步、订阅 URL 未拉取成功、误开启了其他 VPN 或防火墙拦截。<br />
+            <strong>解决办法：</strong>确认系统时间开启自动同步；在客户端中重新点击“更新订阅”；关闭第三方安全软件并检查是否允许 TUN 虚拟网卡接口。
+          </p>
+        </div>
+
+        <div class="tb-item">
+          <h4>问题 2：国内网站也加载缓慢或打不开</h4>
+          <p>
+            <strong>可能原因：</strong>误将客户端运行模式改成了“Global（全局）”模式。<br />
+            <strong>解决办法：</strong>在客户端主界面将模式切换回<strong>“Rule（规则模式）”</strong>，让国内流量走 DIRECT 直连。
+          </p>
+        </div>
+
+        <div class="tb-item">
+          <h4>问题 3：多台设备连接时频繁掉线</h4>
+          <p>
+            <strong>可能原因：</strong>超过了套餐允许的同时在线设备数量限制（如基础版限制 3 台、专线版 5 台）。<br />
+            <strong>解决办法：</strong>在控制台查看当前绑定的设备配额，关闭不必要的后台设备，或者升级至支持更多设备的旗舰尊享版套餐。
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+.clients-page {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-silver);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: var(--color-silver);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-accent-green);
+}
+
+.breadcrumb span {
+  color: var(--color-warm-white);
+}
+
+.troubleshoot-box {
+  margin-top: 3rem;
+  background: var(--color-bg-card);
+}
+
+.tb-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tb-item h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-warm-white);
+  margin-bottom: 0.5rem;
+}
+
+.tb-item p {
+  color: var(--color-silver);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.tb-item strong {
+  color: var(--color-accent-green);
+}
+</style>

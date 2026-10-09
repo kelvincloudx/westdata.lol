@@ -1,0 +1,167 @@
+---
+import { SITE_CONFIG } from '../data/siteMeta';
+---
+
+<section class="hero-section">
+  <div class="container hero-inner">
+    <div class="hero-grid-box grid-box">
+      <div class="grid-header">
+        <div class="badge">SIGNAL GRID / MAIN TERMINAL</div>
+        <div class="status-code">STATUS: ONLINE / REF: VERIFIED</div>
+      </div>
+      
+      <div class="hero-content">
+        <div class="hero-brand-tag">[ WESTDATA NETWORK ]</div>
+        <h1 class="hero-title">
+          <span class="hero-brand-name">WESTDATA</span>
+          <span class="hero-subline">为每一次连接提供清晰选择</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          {SITE_CONFIG.subtitle}
+        </p>
+
+        <div class="hero-actions">
+          <a href="/plans/" class="btn btn-primary">
+            查看完整套餐
+          </a>
+          <a href="/start/" class="btn btn-secondary">
+            开始使用
+          </a>
+          <a href={SITE_CONFIG.buyUrl} target="_blank" rel="sponsored nofollow noopener" class="btn btn-orange">
+            前往订阅平台 →
+          </a>
+        </div>
+
+        <div class="hero-info-pills">
+          <div class="pill">
+            <span class="pill-num">150GB - 1000GB</span>
+            <span class="pill-label">月度灵活流量额度</span>
+          </div>
+          <div class="pill">
+            <span class="pill-num">300GB</span>
+            <span class="pill-label">一次性备用流量包</span>
+          </div>
+          <div class="pill">
+            <span class="pill-num">Clash / Shadowrocket</span>
+            <span class="pill-label">主流客户端原生兼容</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.hero-section {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+  position: relative;
+}
+
+.hero-grid-box {
+  background: rgba(28, 34, 38, 0.95);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  padding: 3.5rem 3rem;
+}
+
+.hero-brand-tag {
+  font-family: var(--font-mono);
+  color: var(--color-accent-green);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-brand-name {
+  font-family: var(--font-mono);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--color-warm-white);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.hero-subline {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-accent-green);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: var(--color-silver);
+  max-width: 820px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.hero-info-pills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.pill {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem;
+  background: rgba(17, 20, 23, 0.6);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent-green);
+}
+
+.pill-num {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-warm-white);
+}
+
+.pill-label {
+  font-size: 0.82rem;
+  color: var(--color-silver);
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 2rem 1.5rem;
+  }
+  .hero-brand-name {
+    font-size: 2.5rem;
+  }
+  .hero-subline {
+    font-size: 1.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+</style>

@@ -1,0 +1,104 @@
+---
+import { FAQS } from '../data/faqs';
+---
+
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-title-wrap">
+      <div class="section-num">02 / FAQ & SUPPORT</div>
+      <h2 class="section-title">常见关注问题与解答 (FAQ)</h2>
+      <p class="section-subtitle">
+        收录用户在选购西部数据 WESTDATA 订阅、客户端导入、流量计费与故障排查中最核心的问题。
+      </p>
+    </div>
+
+    <!-- Dual Column FAQ Grid -->
+    <div class="faq-dual-grid">
+      <div class="faq-column">
+        {FAQS.slice(0, 5).map(faq => (
+          <div class="faq-item grid-box">
+            <div class="faq-question">
+              <span class="q-icon">Q.</span>
+              <h4>{faq.question}</h4>
+            </div>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="faq-column">
+        {FAQS.slice(5, 10).map(faq => (
+          <div class="faq-item grid-box">
+            <div class="faq-question">
+              <span class="q-icon">Q.</span>
+              <h4>{faq.question}</h4>
+            </div>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.faq-section {
+  padding: 4rem 0;
+}
+
+.faq-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.faq-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.faq-item {
+  padding: 1.5rem;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+}
+
+.faq-question {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.q-icon {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  color: var(--color-accent-green);
+  font-size: 1.1rem;
+}
+
+.faq-question h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-warm-white);
+  line-height: 1.4;
+}
+
+.faq-answer {
+  padding-left: 1.85rem;
+  color: var(--color-silver);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .faq-dual-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

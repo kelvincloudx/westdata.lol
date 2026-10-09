@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { ARTICLES } from '../../data/articles';
+import { SITE_CONFIG } from '../../data/siteMeta';
+
+const canonicalUrl = `${SITE_CONFIG.domain}/insights/`;
+---
+
+<Layout
+  title={`WESTDATA 技术指南与原创文章目录｜${SITE_CONFIG.name}`}
+  description="浏览 WESTDATA 西部数据 7 篇原创技术文章，涵盖套餐流量规划、300GB一次性流量包、订阅安全保护、ClashParty规则分流、连接质量评估及跨设备配置技巧。"
+  canonicalUrl={canonicalUrl}
+>
+  <div class="insights-page container">
+    <nav class="breadcrumb" aria-label="面包屑导航">
+      <a href="/">首页</a> &gt; <span>文章目录</span>
+    </nav>
+
+    <div class="section-title-wrap">
+      <div class="section-num">06 / INSIGHTS & GUIDES</div>
+      <h1 class="section-title">WESTDATA 技术指南与原创文章目录</h1>
+      <p class="section-subtitle">
+        收录由 WESTDATA 精心撰写的 7 篇原创技术指南，帮助你解答选购套餐、订阅保护与客户端配置的所有疑问。
+      </p>
+    </div>
+
+    <div class="articles-list grid-box">
+      <div class="grid-header">
+        <div class="badge">ORIGINAL ARTICLES ({ARTICLES.length})</div>
+        <div>编号目录展开</div>
+      </div>
+      <div class="articles-list-body">
+        {ARTICLES.map((article, idx) => (
+          <ArticleCard article={article} index={idx} />
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+.insights-page {
+  padding-top: 2rem;
+  padding-bottom: 4rem;
+}
+
+.breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-silver);
+  margin-bottom: 1.5rem;
+}
+
+.breadcrumb a {
+  color: var(--color-silver);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-accent-green);
+}
+
+.breadcrumb span {
+  color: var(--color-warm-white);
+}
+
+.articles-list-body {
+  padding: 1rem 2rem;
+}
+</style>
